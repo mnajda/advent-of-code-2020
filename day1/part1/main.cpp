@@ -5,7 +5,7 @@
 #include <vector>
 #include <unordered_set>
 
-std::vector<std::int64_t> load_file(const std::string& filepath)
+std::vector<std::int64_t> load_file(const char* filepath)
 {
     std::vector<std::int64_t> output{};
     std::ifstream file(filepath);
@@ -22,7 +22,7 @@ std::vector<std::int64_t> load_file(const std::string& filepath)
 std::int64_t calculate(const std::vector<std::int64_t> input)
 {
     constexpr auto target{2020};
-    std::unordered_set<std::int64_t> set;
+    std::unordered_set<std::int64_t> set{};
 
     for (const auto value : input)
     {
@@ -43,7 +43,6 @@ int main(int argc, char** argv)
     {
         throw std::runtime_error("No filepath given");
     }
-    const auto filepath{argv[1]};
-    const auto input = load_file(filepath);
+    const auto input = load_file(argv[1]);
     std::cout << calculate(std::move(input)) << std::endl;
 }

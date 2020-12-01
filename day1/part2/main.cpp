@@ -1,4 +1,3 @@
-#include <algorithm>
 #include <cstdint>
 #include <fstream>
 #include <iostream>
@@ -6,7 +5,7 @@
 #include <vector>
 #include <unordered_set>
 
-std::vector<std::int64_t> load_file(const std::string& filepath)
+std::vector<std::int64_t> load_file(const char* filepath)
 {
     std::vector<std::int64_t> output{};
     std::ifstream file(filepath);
@@ -23,16 +22,19 @@ std::vector<std::int64_t> load_file(const std::string& filepath)
 std::int64_t calculate(const std::vector<std::int64_t> input)
 {
     constexpr auto target{2020};
+    std::unordered_set<std::int64_t> set{};
 
     for (auto i = 0; i < input.size(); ++i)
     {
-        for (auto j = i + 1; j < input.size(); ++j)
+        const auto first = target - input[i];
+        for (auto k = i + 1; k < input.size(); ++k)
         {
-            const auto result = target - input[i] - input[j];
-            if ((std::find(input.begin(), input.end(), result)) != input.end())
+            const auto result = first - input[k];
+            if (set.find(result) != set.end())
             {
-                return input[i] * input[j] * result;
+                return input[i] * input[k] * result;
             }
+            set.insert(input[k]);
         }
     }
 
@@ -45,7 +47,6 @@ int main(int argc, char** argv)
     {
         throw std::runtime_error("No filepath given");
     }
-    const auto filepath{argv[1]};
-    const auto input = load_file(filepath);
+    const auto input = load_file(argv[1]);
     std::cout << calculate(std::move(input)) << std::endl;
 }
