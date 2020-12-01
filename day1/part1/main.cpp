@@ -20,8 +20,8 @@ std::vector<std::int64_t> load_file(const std::string& filepath)
 }
 
 std::int64_t calculate(const std::vector<std::int64_t> input)
-{   
-    constexpr auto target{2020}; 
+{
+    constexpr auto target{2020};
     std::unordered_set<std::int64_t> set;
 
     for (const auto value : input)
