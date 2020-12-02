@@ -10,8 +10,7 @@ defmodule Part2 do
     [first_pos, last_pos] =
       policy
       |> String.split("-")
-      |> Enum.map(&String.to_integer/1)
-      |> Enum.map(fn elem -> elem - 1 end)
+      |> Enum.map(fn elem -> String.to_integer(elem) - 1 end)
 
     [{first, _}, {last, _}] =
       password
@@ -20,7 +19,7 @@ defmodule Part2 do
       |> Enum.filter(fn {_, iter} -> iter == first_pos or iter == last_pos end)
 
     key = letter |> String.first()
-    (first == key and last != key) or (first != key and last == key)
+    (first == key or last == key) and (first != last)
   end
 
   defp parse(input) do
