@@ -28,7 +28,7 @@ fn load_file(path: &String) -> Vec<Vec<Point>> {
 }
 
 fn solve(input: Vec<Vec<Point>>) -> i64 {
-    let len = input.first().unwrap().len();
+    let len = input[0].len();
     let steps = [(1, 1), (3, 1), (5, 1), (7, 1), (1, 2)];
     let mut pos = [0, 0, 0, 0, 0];
     let mut slopes = [0, 0, 0, 0, 0];
@@ -43,7 +43,7 @@ fn solve(input: Vec<Vec<Point>>) -> i64 {
         }
     }
 
-    return slopes.iter().fold(1, |acc, val| acc * val);
+    return slopes.iter().product();
 }
 
 fn main() {
