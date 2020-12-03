@@ -1,10 +1,10 @@
 use std::env;
 use std::fs;
 
-#[derive(PartialEq)]
+#[derive(PartialEq, Copy, Clone)]
 enum Point {
     Empty,
-    Tree
+    Tree,
 }
 
 fn to_point(val: char) -> Point {
@@ -21,23 +21,18 @@ fn convert(row: &str) -> Vec<Point> {
 
 fn load_file(path: &String) -> Vec<Vec<Point>> {
     let contents = fs::read_to_string(path).expect("Error reading file");
-    return contents.split_whitespace().map(|row| convert(row)).collect();
+    return contents
+        .split_whitespace()
+        .map(|row| convert(row))
+        .collect();
 }
 
-fn solve(input: Vec<Vec<Point>>) -> i64 {
-    let mut pos = 0;
-    let mut trees = 0;
-
-    for row in &input[1..] {
-        let index = (pos + 3) % row.len();
-        if row[index] == Point::Tree {
-            trees += 1;
-        }
-
-        pos += 3;
-    }
-
-    return trees;
+fn solve(input: Vec<Vec<Point>>) -> usize {
+    return input[1..]
+        .iter()
+        .enumerate()
+        .map(|(iter, row)| row[(iter * 3) % row.len()] == Point::Tree)
+        .len();
 }
 
 fn main() {

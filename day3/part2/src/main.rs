@@ -4,7 +4,7 @@ use std::fs;
 #[derive(PartialEq)]
 enum Point {
     Empty,
-    Tree
+    Tree,
 }
 
 fn to_point(val: char) -> Point {
@@ -21,12 +21,15 @@ fn convert(row: &str) -> Vec<Point> {
 
 fn load_file(path: &String) -> Vec<Vec<Point>> {
     let contents = fs::read_to_string(path).expect("Error reading file");
-    return contents.split_whitespace().map(|row| convert(row)).collect();
+    return contents
+        .split_whitespace()
+        .map(|row| convert(row))
+        .collect();
 }
 
 fn solve(input: Vec<Vec<Point>>) -> i64 {
     let len = input.first().unwrap().len();
-    let steps = [(1 ,1), (3, 1), (5, 1), (7, 1), (1, 2)];
+    let steps = [(1, 1), (3, 1), (5, 1), (7, 1), (1, 2)];
     let mut pos = [0, 0, 0, 0, 0];
     let mut slopes = [0, 0, 0, 0, 0];
 
