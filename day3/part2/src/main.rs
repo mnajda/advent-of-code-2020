@@ -26,22 +26,17 @@ fn load_file(path: &String) -> Vec<Vec<Point>> {
 
 fn solve(input: Vec<Vec<Point>>) -> i64 {
     let len = input.first().unwrap().len();
-    let steps = [1, 3, 5, 7, 1];
+    let steps = [(1 ,1), (3, 1), (5, 1), (7, 1), (1, 2)];
     let mut pos = [0, 0, 0, 0, 0];
     let mut slopes = [0, 0, 0, 0, 0];
 
-    for i in 1..input.len() {
-        for slope in 0..4 {
-            let index = (pos[slope] + steps[slope]) % len;
-            slopes[slope] += if input[i][index] == Point::Tree { 1 } else { 0 };
-
-            pos[slope] += steps[slope];
-        }
-        if i % 2 == 0 {
-            let index = (pos[4] + steps[4]) % len;
-            slopes[4] += if input[i][index] == Point::Tree { 1 } else { 0 };
-
-            pos[4] += steps[4];
+    for (slope, (right, down)) in steps.iter().enumerate() {
+        for i in (*down..input.len()).step_by(*down) {
+            let index = (pos[slope] + right) % len;
+            if input[i][index] == Point::Tree {
+                slopes[slope] += 1;
+            }
+            pos[slope] += right;
         }
     }
 
