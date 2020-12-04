@@ -10,11 +10,7 @@ def load(path):
 
 
 def make_dict(fields):
-    passport = {}
-    for field in fields:
-        key, value = field.split(":")
-        passport[key] = value
-    return passport
+    return dict((field.split(":") for field in fields))
 
 
 def validate_height(height):

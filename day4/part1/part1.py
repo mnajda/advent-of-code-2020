@@ -10,22 +10,16 @@ def load(path):
 
 
 def make_dict(fields):
-    passport = {}
-    for field in fields:
-        key, value = field.split(":")
-        passport[key] = value
-    return passport
+    return dict((field.split(":") for field in fields))
+
+
+def is_valid(passport):
+    return all(field in passport for field in FIELDS)
 
 
 def count_valid(input):
-    valid = 0
-
-    for line in input:
-        passport = make_dict(line.replace('\n', ' ').split(' '))
-        if all (field in passport for field in FIELDS):
-            valid += 1
-
-    return valid
+    passports = (make_dict(line.replace('\n', ' ').split(' ')) for line in input)
+    return len(list(filter(lambda passport: is_valid(passport), passports)))
 
 
 if __name__ == "__main__":
