@@ -19,7 +19,7 @@ def is_valid(passport):
 
 def count_valid(input):
     passports = (make_dict(line.replace('\n', ' ').split(' ')) for line in input)
-    return len(list(filter(lambda passport: is_valid(passport), passports)))
+    return sum(is_valid(passport) for passport in passports)
 
 
 if __name__ == "__main__":
