@@ -1,4 +1,5 @@
 import { readFileSync } from 'fs';
+
 function decodeRow(val: String) {
     return parseInt(val.split('F').join('0').split('B').join('1'), 2);
 }
