@@ -11,3 +11,4 @@ Solutions for [Advent of Code 2020](https://adventofcode.com/2020).
 | 3 | [Toboggan Trajectory](https://adventofcode.com/2020/day/3) | Rust | [day3](https://github.com/mnajda/advent-of-code-2020/tree/main/day3) |
 | 4 | [Passport Processing](https://adventofcode.com/2020/day/4) | Python | [day4](https://github.com/mnajda/advent-of-code-2020/tree/main/day4) |
 | 5 | [Binary Boarding](https://adventofcode.com/2020/day/5) | Typescript | [day5](https://github.com/mnajda/advent-of-code-2020/tree/main/day5) |
+| 6 | [Custom Customs](https://adventofcode.com/2020/day/6) | Go | [day6](https://github.com/mnajda/advent-of-code-2020/tree/main/day6) |
