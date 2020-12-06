@@ -16,14 +16,14 @@ func main() {
 	result := 0
 	for i := range input {
 		group := strings.Split(string(input[i]), "\n")
-		set := make(map[string]bool)
+		questions := make(map[string]bool)
 		for k := range group {
 			for _, char := range group[k] {
-				set[string(char)] = true
+				questions[string(char)] = true
 			}
 		}
 
-		result += len(set)
+		result += len(questions)
 	}
 
 	fmt.Println(result)
