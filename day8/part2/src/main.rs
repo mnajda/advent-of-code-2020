@@ -1,3 +1,4 @@
+use std::collections::HashSet;
 use std::env;
 use std::fs;
 
@@ -18,16 +19,16 @@ struct Device {
     ip: i64,
     acc: i64,
     program: Vec<Instruction>,
-    executed: Vec<bool>,
+    executed: HashSet<i64>,
 }
 
 impl Device {
     pub fn new(program: Vec<Instruction>) -> Self {
-        let executed = vec![false; program.len()];
+        let executed = HashSet::new();
         Device {
             ip: 0,
             acc: 0,
-            program,
+            program: program,
             executed: executed,
         }
     }
@@ -37,28 +38,27 @@ impl Device {
             if self.ip as usize >= self.program.len() {
                 return Some(self.acc);
             }
-            if self.executed[self.ip as usize] == true {
-                return None
+            if self.executed.contains(&self.ip) {
+                return None;
             }
             self.execute_instruction();
         }
     }
 
     fn execute_instruction(&mut self) {
+        self.executed.insert(self.ip);
         let instruction = &self.program[self.ip as usize];
+
         match instruction.operation {
             Operation::Nop => {
-                self.executed[self.ip as usize] = true;
                 self.ip += 1;
             }
             Operation::Acc => {
-                self.executed[self.ip as usize] = true;
                 self.acc += instruction.operand;
                 self.ip += 1;
             }
             Operation::Jmp => {
                 let offset = instruction.operand;
-                self.executed[self.ip as usize] = true;
                 self.ip += offset;
             }
         };
