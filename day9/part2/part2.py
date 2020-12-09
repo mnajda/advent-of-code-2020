@@ -25,7 +25,7 @@ def solve(input):
     while begin < len(input):
         if sum == target and begin + 1 < end:
             return input[begin:end]
-        elif sum < target and begin < len(input):
+        elif sum < target and end < len(input):
             sum += input[end]
             end += 1
         else:
