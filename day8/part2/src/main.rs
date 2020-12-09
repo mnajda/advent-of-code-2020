@@ -2,14 +2,14 @@ use std::collections::HashSet;
 use std::env;
 use std::fs;
 
-#[derive(Copy, Clone, PartialEq, Debug)]
+#[derive(Copy, Clone, PartialEq)]
 enum Operation {
     Nop,
     Acc,
     Jmp,
 }
 
-#[derive(Clone, Debug)]
+#[derive(Clone)]
 struct Instruction {
     operation: Operation,
     operand: i64,
@@ -102,7 +102,7 @@ fn change_operation(op: Operation) -> Operation {
 fn make_programs(input: &Vec<Instruction>, op: Operation) -> Vec<Vec<Instruction>> {
     let mut output = Vec::new();
 
-    for _ in 0..input.len() {
+    while output.len() <= input.len() {
         for i in 0..input.len() {
             let operation = &input[i].operation;
             if *operation == op {
@@ -132,8 +132,8 @@ fn main() {
     let changed_nops = make_programs(&input, Operation::Nop);
     let changed_jmps = make_programs(&input, Operation::Jmp);
 
-    for program in changed_nops.iter().zip(changed_jmps.iter()) {
-        let (changed_nop, changed_jmp) = program;
+    for programs in changed_nops.iter().zip(changed_jmps.iter()) {
+        let (changed_nop, changed_jmp) = programs;
 
         let mut changed_nop_device = Device::new(changed_nop.to_vec());
         let mut changed_jmp_device = Device::new(changed_jmp.to_vec());
