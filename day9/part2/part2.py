@@ -33,7 +33,6 @@ def solve(input):
             begin += 1
 
 
-
 if __name__ == "__main__":
     path = sys.argv[1]
     input = load(path)
