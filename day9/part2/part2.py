@@ -7,15 +7,12 @@ def load(path):
         return [int(line) for line in file.read().split("\n")]
 
 
-def is_valid(pos, val, input):
-    all_combinations = (combinations(input[pos:(pos + 25)], 2))
-    return any((sum(combination) == val for combination in all_combinations))
+def is_valid(range, val):
+    return any((sum(combination) == val for combination in (combinations(range, 2))))
 
 
 def find_invalid_number(input):
-    for pos, val in enumerate(input[25:]):
-        if not is_valid(pos, val, input):
-            return val
+    return next((val for pos, val in enumerate(input[25:]) if not is_valid(input[pos:(pos + 25)], val)), None)
 
 
 def solve(input):
@@ -35,8 +32,7 @@ def solve(input):
 
 if __name__ == "__main__":
     path = sys.argv[1]
-    input = load(path)
-    result = solve(input)
+    result = solve(load(path))
     min, max = min(result), max(result)
 
     print(min + max)
