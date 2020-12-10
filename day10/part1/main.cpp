@@ -2,18 +2,18 @@
 #include <cstdint>
 #include <fstream>
 #include <iostream>
-#include <list>
 #include <optional>
+#include <vector>
 
-std::list<std::int64_t> load_file(const char* filepath)
+std::vector<std::int64_t> load_file(const char* filepath)
 {
-    std::list<std::int64_t> output{};
+    std::vector<std::int64_t> output{};
     std::ifstream file(filepath);
 
     std::int64_t input{};
     while (file >> input)
     {
-        output.emplace_front(input);
+        output.emplace_back(input);
     }
 
     return output;
@@ -21,8 +21,8 @@ std::list<std::int64_t> load_file(const char* filepath)
 
 std::optional<std::int64_t> pick_available_adapter(
     const std::int64_t jolts,
-    const std::list<int64_t>::const_iterator begin,
-    const std::list<int64_t>& input)
+    const std::vector<int64_t>::const_iterator begin,
+    const std::vector<int64_t>& input)
 {
     const auto available = std::find_if(
         begin,
@@ -38,16 +38,16 @@ std::optional<std::int64_t> pick_available_adapter(
     return std::nullopt;
 }
 
-std::int64_t solve(std::list<int64_t> input)
+std::int64_t solve(std::vector<int64_t> input)
 {
     auto one_jolt_differences{0};
     auto three_jolt_differences{0};
     
-    input.push_front(0);
-    input.sort();
+    input.emplace_back(0);
+    std::sort(input.begin(), input.end());
     for (auto adapter = input.begin(); adapter != input.end(); ++adapter)
     {
-        const auto available = pick_available_adapter(*adapter, std::next(adapter, 1), input);
+        const auto available = pick_available_adapter(*adapter, adapter + 1, input);
         if (available)
         {
             const auto difference = *available - *adapter;
