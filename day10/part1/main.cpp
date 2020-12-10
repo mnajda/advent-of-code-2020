@@ -58,6 +58,7 @@ std::int64_t solve(std::list<int64_t> input)
                     break;
                 case 3:
                     ++three_jolt_differences;
+                    break;
                 default:
                     break;
             }
