@@ -13,7 +13,7 @@ std::list<std::int64_t> load_file(const char* filepath)
     std::int64_t input{};
     while (file >> input)
     {
-        output.emplace_back(input);
+        output.emplace_front(input);
     }
 
     return output;
