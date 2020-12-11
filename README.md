@@ -16,3 +16,4 @@ Solutions for [Advent of Code 2020](https://adventofcode.com/2020).
 | 8 | [Handheld Halting](https://adventofcode.com/2020/day/8) | Rust | [day8](https://github.com/mnajda/advent-of-code-2020/tree/main/day8) |
 | 9 | [Encoding Error](https://adventofcode.com/2020/day/9) | Python | [day9](https://github.com/mnajda/advent-of-code-2020/tree/main/day9) |
 | 10 | [Adapter Array](https://adventofcode.com/2020/day/10) | C++ | [day10](https://github.com/mnajda/advent-of-code-2020/tree/main/day10) |
+| 11 | [Seating System](https://adventofcode.com/2020/day/11) | Julia | [day11](https://github.com/mnajda/advent-of-code-2020/tree/main/day11) |
