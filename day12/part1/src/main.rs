@@ -19,7 +19,7 @@ fn make_command(line: &str) -> Command {
     return Command{ action: action, value: value };
 }
 
-fn load_program(path: &String) -> Vec<Command> {
+fn load_file(path: &String) -> Vec<Command> {
     let contents = fs::read_to_string(path).expect("Error reading file");
     return contents
         .lines()
@@ -28,7 +28,7 @@ fn load_program(path: &String) -> Vec<Command> {
 }
 
 fn turn(position: &mut Position, value: i64) {
-    position.direction = (position.direction + value).abs() % 360;
+    position.direction = (position.direction + value) % 360;
 }
 
 fn move_ship(position: &mut Position, value: i64) {
@@ -67,7 +67,7 @@ fn main() {
         return;
     }
 
-    let input = load_program(&args[1]);
+    let input = load_file(&args[1]);
     let result = solve(input);
 
     println!("{}", result);
