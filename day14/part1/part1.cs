@@ -8,8 +8,6 @@ struct Command
 {
     public ulong address { get; set; }
     public ulong value { get; set; }
-
-    public override string ToString() => $"({address}, {value})";
 }
 
 struct Instructions
@@ -46,7 +44,7 @@ class Part1
         }
     }
 
-    static ulong run(List<Instructions> program)
+    static ulong Run(List<Instructions> program)
     {
         var memory = new Dictionary<ulong, ulong>();
         foreach (var instruction in program)
@@ -65,7 +63,7 @@ class Part1
     static void Main(string[] args)
     {
         var input = ReadFile(args[0]);
-        var result = run(input);
+        var result = Run(input);
 
         Console.WriteLine(result);
     }
