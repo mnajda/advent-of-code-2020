@@ -19,3 +19,4 @@ Solutions for [Advent of Code 2020](https://adventofcode.com/2020).
 | 11 | [Seating System](https://adventofcode.com/2020/day/11) | Julia | [day11](https://github.com/mnajda/advent-of-code-2020/tree/main/day11) |
 | 12 | [Rain Risk](https://adventofcode.com/2020/day/12) | Rust | [day12](https://github.com/mnajda/advent-of-code-2020/tree/main/day12) |
 | 13 | [Shuttle Search](https://adventofcode.com/2020/day/13) | Elixir | [day13](https://github.com/mnajda/advent-of-code-2020/tree/main/day13) |
+| 14 | [Docking Data](https://adventofcode.com/2020/day/14) | C# | [day14](https://github.com/mnajda/advent-of-code-2020/tree/main/day14) |
