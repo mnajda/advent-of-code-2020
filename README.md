@@ -20,3 +20,4 @@ Solutions for [Advent of Code 2020](https://adventofcode.com/2020).
 | 12 | [Rain Risk](https://adventofcode.com/2020/day/12) | Rust | [day12](https://github.com/mnajda/advent-of-code-2020/tree/main/day12) |
 | 13 | [Shuttle Search](https://adventofcode.com/2020/day/13) | Elixir | [day13](https://github.com/mnajda/advent-of-code-2020/tree/main/day13) |
 | 14 | [Docking Data](https://adventofcode.com/2020/day/14) | C# | [day14](https://github.com/mnajda/advent-of-code-2020/tree/main/day14) |
+| 15 | [Rambunctious Recitation](https://adventofcode.com/2020/day/15) | Go | [day15](https://github.com/mnajda/advent-of-code-2020/tree/main/day15) |
