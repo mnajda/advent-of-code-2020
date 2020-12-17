@@ -29,7 +29,8 @@ template<> struct hash<Point>
 {
     size_t operator()(const Point& point) const
     {   
-        return std::hash<int>{}(point.x) ^ std::hash<int>{}(point.y) ^ std::hash<int>{}(point.z);
+        const std::hash<int> hash{};
+        return hash(point.x) ^ hash(point.y) ^ hash(point.z);
     }
 };
 } // namespace std
@@ -41,15 +42,15 @@ constexpr auto make_adjacent()
     auto iter = 0;
     std::array<Point, 26> adjacent{};
 
-    for (auto i = -1; i < 2; ++i)
+    for (auto x = -1; x < 2; ++x)
     {
-        for (auto j = -1; j < 2; ++j)
+        for (auto y = -1; y < 2; ++y)
         {
-            for (auto k = -1; k < 2; ++k)
+            for (auto z = -1; z < 2; ++z)
             {
-                if (not (i == 0 and j == 0 and k == 0))
+                if (not (x == 0 and y == 0 and z == 0))
                 {
-                    adjacent[iter++] = Point{i, j, k};
+                    adjacent[iter++] = Point{x, y, z};
                 }
             }
         }
