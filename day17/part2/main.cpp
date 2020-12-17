@@ -109,6 +109,11 @@ int count_active_neighbours(const Point& cube, const std::unordered_set<Point>& 
         {
             ++result;
         }
+
+        if (result > 3)
+        {
+            return result;
+        }
     }
     return result;
 }
