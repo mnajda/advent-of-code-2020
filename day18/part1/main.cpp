@@ -58,20 +58,20 @@ std::string make_postfix_expression(const std::string& line)
     std::string postfix{};
     std::stack<char> operator_stack{};
 
-    for (auto it = input.begin(); it != input.end(); ++it)
+    for (const auto c : input)
     {
-        if (isdigit(*it))
+        if (isdigit(c))
         {
-            postfix.push_back(*it);
+            postfix.push_back(c);
             postfix.push_back(' ');
         }
-        else if (*it != '(' and *it != ')')
+        else if (c != '(' and c != ')')
         {
-            found_operator(*it, postfix, operator_stack);
+            found_operator(c, postfix, operator_stack);
         }
-        else if (*it == '(')
+        else if (c == '(')
         {
-            operator_stack.push(*it);
+            operator_stack.push(c);
         }
         else
         {
@@ -118,19 +118,19 @@ std::int64_t evaluate(std::string expression)
 {
     std::stack<std::int64_t> operands;
 
-    for (auto it = expression.begin(); it != expression.end(); ++it)
+    for (const auto c : expression)
     {
-        if (isdigit(*it))
+        if (isdigit(c))
         {
-            operands.push(*it - '0');
+            operands.push(c - '0');
         }
-        else if (*it != ' ')
+        else if (c != ' ')
         {
             const auto rhs = operands.top();
             operands.pop();
             const auto lhs = operands.top();
             operands.pop();
-            operands.push(process(*it, lhs, rhs));
+            operands.push(process(c, lhs, rhs));
         }
     }
 
