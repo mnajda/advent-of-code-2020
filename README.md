@@ -24,3 +24,4 @@ Solutions for [Advent of Code 2020](https://adventofcode.com/2020).
 | 16 | [Ticket Translation](https://adventofcode.com/2020/day/16) | Kotlin | [day16](https://github.com/mnajda/advent-of-code-2020/tree/main/day16) |
 | 17 | [Conway Cubes](https://adventofcode.com/2020/day/17) | C++ | [day17](https://github.com/mnajda/advent-of-code-2020/tree/main/day17) |
 | 18 | [Operation Order](https://adventofcode.com/2020/day/18) | C++ | [day18](https://github.com/mnajda/advent-of-code-2020/tree/main/day18) |
+| 19 | [Monster Messages](https://adventofcode.com/2020/day/19) | Rust | [day19](https://github.com/mnajda/advent-of-code-2020/tree/main/day19) |
